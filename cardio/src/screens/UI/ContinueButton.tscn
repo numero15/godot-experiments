@@ -1,0 +1,9 @@
+[gd_scene format=2]
+
+[node name="Continue" type="Button"]
+margin_right = 383.0
+margin_bottom = 39.0
+text = "continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}

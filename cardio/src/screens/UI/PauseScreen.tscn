@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/theme/UI_theme.tres" type="Theme" id=1]
+[ext_resource path="res://src/screens/UI/ChangeSceenButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/screens/UI/ContinueButton.tscn" type="PackedScene" id=3]
+
+[node name="Pause" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseOverlay" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.180392 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseOverlay"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -191.0
+margin_top = -84.0
+margin_right = 192.0
+margin_bottom = 85.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Continue" parent="PauseOverlay/VBoxContainer" instance=ExtResource( 3 )]
+
+[node name="TitleButton" parent="PauseOverlay/VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 43.0
+margin_right = 383.0
+margin_bottom = 82.0
+text = "menu"
+scene_to_load = "res://src/screens/UI/TitleScreen.tscn"
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -35.0
+margin_top = -166.5
+margin_right = 35.0
+margin_bottom = -133.5
+text = "Pause"
+__meta__ = {
+"_edit_use_anchors_": false
+}
