@@ -1,64 +1,28 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://src/screens/game/GameContainer.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://src/screens/UI/Panel.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/screens/game/GameMap.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/ui/UI_texture_noBG.png" type="Texture" id=3]
 
-[node name="GameContainer" type="Control"]
+[node name="GameContainer" instance=ExtResource( 1 )]
+rect_min_size = Vector2( 64, 64 )
+mouse_filter = 1
+
+[node name="ViewportContainer" type="ViewportContainer" parent="." index="1"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect" type="ColorRect" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0.576471, 0.576471, 0.576471, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Control" type="ViewportContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
+mouse_filter = 1
 stretch = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Viewport" type="Viewport" parent="Control"]
+[node name="Viewport" type="Viewport" parent="ViewportContainer" index="0"]
 size = Vector2( 480, 270 )
 handle_input_locally = false
 render_target_update_mode = 3
 
-[node name="Node2D" type="Node2D" parent="Control/Viewport"]
+[node name="GameMap" parent="ViewportContainer/Viewport" index="0" instance=ExtResource( 2 )]
 
-[node name="Camera2D" type="Camera2D" parent="Control/Viewport/Node2D"]
-
-[node name="Sprite" type="Sprite" parent="Control/Viewport/Node2D"]
-texture = ExtResource( 2 )
-
-[node name="DragHandle" type="TextureRect" parent="."]
-margin_right = 64.0
-margin_bottom = 64.0
-rect_scale = Vector2( 0.2, 0.2 )
-texture = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ResizeHandle" type="TextureRect" parent="."]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-rect_scale = Vector2( 0.2, 0.2 )
-rect_pivot_offset = Vector2( 1, 0 )
-texture = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[connection signal="gui_input" from="DragHandle" to="." method="_on_DragHandle_gui_input"]
-[connection signal="gui_input" from="ResizeHandle" to="." method="_on_ResizeHandle_gui_input"]
+[node name="TextureRect" parent="." index="2"]
+texture = ExtResource( 3 )

@@ -15,7 +15,7 @@ _global_script_class_icons={
 [application]
 
 config/name="cardio"
-run/main_scene="res://src/screens/UI/TitleScreen.tscn"
+run/main_scene="res://src/screens/TitleScreen/TitleScreen.tscn"
 config/icon="res://icon.png"
 
 [autoload]

@@ -35,13 +35,14 @@ __meta__ = {
 }
 
 [node name="Continue" parent="PauseOverlay/VBoxContainer" instance=ExtResource( 3 )]
+margin_bottom = 12.0
 
 [node name="TitleButton" parent="PauseOverlay/VBoxContainer" instance=ExtResource( 2 )]
-margin_top = 43.0
+margin_top = 16.0
 margin_right = 383.0
-margin_bottom = 82.0
+margin_bottom = 28.0
 text = "menu"
-scene_to_load = "res://src/screens/UI/TitleScreen.tscn"
+scene_to_load = "res://src/screens/TitleScreen/TitleScreen.tscn"
 
 [node name="Label" type="Label" parent="."]
 anchor_left = 0.5
