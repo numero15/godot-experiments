@@ -1,0 +1,121 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://src/screens/Screen.gd" type="Script" id=1]
+[ext_resource path="res://src/shaders/palette.gdshader" type="Shader" id=2]
+[ext_resource path="res://assets/theme/UI_theme.tres" type="Theme" id=3]
+[ext_resource path="res://assets/ui/noise.png" type="Texture" id=4]
+[ext_resource path="res://assets/ui/noiseSmall.png" type="Texture" id=6]
+[ext_resource path="res://src/shaders/vhs.gdshader" type="Shader" id=7]
+
+[sub_resource type="Gradient" id=7]
+colors = PoolColorArray( 0.604492, 0.167652, 0.167652, 1, 1, 0.867188, 0.867188, 1 )
+
+[sub_resource type="GradientTexture" id=8]
+gradient = SubResource( 7 )
+
+[sub_resource type="ShaderMaterial" id=9]
+shader = ExtResource( 2 )
+shader_param/mix_amount = 1.0
+shader_param/lod = 0.0
+shader_param/gradient = SubResource( 8 )
+
+[sub_resource type="Gradient" id=10]
+colors = PoolColorArray( 0.152941, 0.184314, 0.188235, 1, 0.32549, 0.380392, 0.419608, 1 )
+
+[sub_resource type="GradientTexture" id=11]
+gradient = SubResource( 10 )
+
+[sub_resource type="ShaderMaterial" id=12]
+shader = ExtResource( 2 )
+shader_param/mix_amount = 1.0
+shader_param/lod = 0.55
+shader_param/gradient = SubResource( 11 )
+
+[sub_resource type="Gradient" id=16]
+colors = PoolColorArray( 0.152941, 0.184314, 0.188235, 1, 0.32549, 0.380392, 0.419608, 1 )
+
+[sub_resource type="GradientTexture" id=17]
+gradient = SubResource( 16 )
+
+[sub_resource type="ShaderMaterial" id=15]
+shader = ExtResource( 7 )
+shader_param/overlay = true
+shader_param/scanlines_opacity = 0.176
+shader_param/scanlines_width = 0.25
+shader_param/grille_opacity = 0.0
+shader_param/resolution = Vector2( 320, 240 )
+shader_param/pixelate = false
+shader_param/roll = false
+shader_param/roll_speed = 8.0
+shader_param/roll_size = 15.0
+shader_param/roll_variation = 1.203
+shader_param/distort_intensity = 0.024
+shader_param/noise_opacity = 0.0
+shader_param/noise_speed = 0.0
+shader_param/static_noise_intensity = 0.013
+shader_param/aberration = 0.008
+shader_param/brightness = 1.4
+shader_param/discolor = true
+shader_param/warp_amount = 0.0
+shader_param/clip_warp = false
+shader_param/vignette_intensity = 0.4
+shader_param/vignette_opacity = 0.103
+shader_param/mix_amount = 1.0
+shader_param/lod = 0.0
+shader_param/gradient = SubResource( 17 )
+
+[sub_resource type="CanvasItemMaterial" id=13]
+blend_mode = 1
+
+[node name="Screen" type="Control"]
+material = SubResource( 9 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+theme = ExtResource( 3 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Compositing" type="CanvasLayer" parent="."]
+
+[node name="ScreenShader" type="Polygon2D" parent="Compositing"]
+material = SubResource( 12 )
+position = Vector2( 251.5, 138.5 )
+scale = Vector2( 2.495, 1.425 )
+polygon = PoolVector2Array( -134, -170, 877, -161, 796, 546, -290, 570 )
+
+[node name="Polygon2D" type="ColorRect" parent="Compositing"]
+visible = false
+material = SubResource( 15 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Compositing"]
+modulate = Color( 1, 1, 1, 0.0392157 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1440.0
+margin_bottom = 810.0
+mouse_filter = 2
+texture = ExtResource( 6 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpriteNoise" type="Sprite" parent="Compositing"]
+visible = false
+modulate = Color( 1, 1, 1, 0.0588235 )
+material = SubResource( 13 )
+position = Vector2( 242.5, 137 )
+scale = Vector2( 0.252604, 0.259259 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}

@@ -1,23 +1,12 @@
 extends KinematicBody2D
 
-export (bool) var mouse_control = true
 export (int) var movement_speed = 175
-var target = Vector2()
-var velocity = Vector2()
-onready  var camera:Camera2D = get_node("Sprite/Camera2D")
+var velocity = Vector2.ZERO
 
-#func _physics_process(delta):
-#	if target.distance_to(position) < 5:
-#		target = position
-#		velocity = Vector2.ZERO
-#
-#	var collision_info = move_and_collide(velocity * delta)
-
-func _input(event):
-	if mouse_control and Input.is_mouse_button_pressed(BUTTON_LEFT):
-		target = get_global_mouse_position()#event.position#get_global_mouse_position()#get_viewport().get_mouse_position()#event.get_position()
-		position=event.position
-		#prevent back and forth movement near target
-		if target.distance_to(position) < 5:
-			target = position
-#		velocity = (target - position).normalized() * movement_speed
+func _physics_process(delta):
+	var inputVector = Vector2.ZERO
+	inputVector.x = Input.get_action_strength("ui_right")-Input.get_action_strength("ui_left")
+	inputVector.y = Input.get_action_strength("ui_down")-Input.get_action_strength("ui_up")
+	inputVector = inputVector.normalized()
+	velocity = inputVector*movement_speed
+	velocity = move_and_slide(velocity)

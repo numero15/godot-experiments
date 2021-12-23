@@ -1,26 +1,33 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/screens/UI/Panel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/screens/game/GameMap.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/ui/UI_texture_noBG.png" type="Texture" id=3]
+[ext_resource path="res://src/screens/game/GameContainer.gd" type="Script" id=4]
 
 [node name="GameContainer" instance=ExtResource( 1 )]
 rect_min_size = Vector2( 64, 64 )
-mouse_filter = 1
+mouse_filter = 2
+script = ExtResource( 4 )
+
+[node name="ColorRect" parent="." index="0"]
+mouse_filter = 2
 
 [node name="ViewportContainer" type="ViewportContainer" parent="." index="1"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 1
+margin_right = 150.0
+margin_bottom = 150.0
+rect_scale = Vector2( 0.333, 0.333 )
+mouse_filter = 2
 stretch = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Viewport" type="Viewport" parent="ViewportContainer" index="0"]
-size = Vector2( 480, 270 )
+size = Vector2( 150, 150 )
 handle_input_locally = false
 render_target_update_mode = 3
+physics_object_picking = true
 
 [node name="GameMap" parent="ViewportContainer/Viewport" index="0" instance=ExtResource( 2 )]
 

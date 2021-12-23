@@ -1,4 +1,5 @@
-extends Control
+extends "res://src/screens/Screen.gd"
+
 
 onready var scene_tree = get_tree()
 onready var pauseScreen : Control = get_node("PauseScreen")
@@ -7,6 +8,7 @@ onready var windows : Control = get_node("Windows")
 var paused: = false setget set_paused
 
 func _ready():
+	._ready()
 	for window in windows.get_children():
 		window.connect('move_to_top', self, 'move_window_to_top')
 

@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 signal health_updated
 

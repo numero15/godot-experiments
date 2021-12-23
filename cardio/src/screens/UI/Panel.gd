@@ -8,6 +8,7 @@ var mousse_offset = null
 var window_size
 signal move_to_top
 
+
 func _on_DragHandle_gui_input(event):
 	if event is InputEventMouseButton :
 		if event.pressed :
@@ -36,5 +37,7 @@ func _on_ResizeHandle_gui_input(event):
 			rect_size.y=rect_min_size.y
 		if rect_size.x<rect_min_size.x :
 			rect_size.x=rect_min_size.x
+			
+
 	
 
