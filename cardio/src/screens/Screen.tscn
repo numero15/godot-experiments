@@ -28,7 +28,7 @@ gradient = SubResource( 10 )
 [sub_resource type="ShaderMaterial" id=12]
 shader = ExtResource( 2 )
 shader_param/mix_amount = 1.0
-shader_param/lod = 0.55
+shader_param/lod = 0.6
 shader_param/gradient = SubResource( 11 )
 
 [sub_resource type="Gradient" id=16]
@@ -85,6 +85,9 @@ material = SubResource( 12 )
 position = Vector2( 251.5, 138.5 )
 scale = Vector2( 2.495, 1.425 )
 polygon = PoolVector2Array( -134, -170, 877, -161, 796, 546, -290, 570 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Polygon2D" type="ColorRect" parent="Compositing"]
 visible = false
@@ -93,11 +96,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="TextureRect" type="TextureRect" parent="Compositing"]
-modulate = Color( 1, 1, 1, 0.0392157 )
+modulate = Color( 1, 1, 1, 0.0588235 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 1440.0
@@ -106,6 +110,7 @@ mouse_filter = 2
 texture = ExtResource( 6 )
 stretch_mode = 2
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 

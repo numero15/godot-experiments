@@ -6,7 +6,7 @@
 [ext_resource path="res://assets/theme/UI_theme.tres" type="Theme" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 1.44704, 1.97492 )
+extents = Vector2( 10, 11.0057 )
 
 [node name="NPC" type="Area2D"]
 collision_layer = 2

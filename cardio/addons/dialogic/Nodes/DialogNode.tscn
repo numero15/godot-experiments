@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://addons/dialogic/Nodes/TextBubble.tscn" type="PackedScene" id=1]
 [ext_resource path="res://addons/dialogic/Example Assets/backgrounds/GlossaryBackground.tres" type="StyleBox" id=2]
@@ -9,6 +9,12 @@
 [ext_resource path="res://addons/dialogic/Nodes/BackgroundMusic.tscn" type="PackedScene" id=7]
 [ext_resource path="res://addons/dialogic/Nodes/random_audio_stream_player.gd" type="Script" id=8]
 [ext_resource path="res://addons/dialogic/Example Assets/Sound Effects/Beep.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/fonts/Roboto_regular_8_dynamicfont.tres" type="DynamicFont" id=10]
+[ext_resource path="res://assets/fonts/BebasKai_12_dynamicfont.tres" type="DynamicFont" id=11]
+[ext_resource path="res://addons/dialogic/Example Assets/Fonts/DefaultBoldFont.tres" type="DynamicFont" id=12]
+[ext_resource path="res://addons/dialogic/Example Assets/Fonts/DefaultItalicFont.tres" type="DynamicFont" id=13]
+[ext_resource path="res://assets/ui/dialogic_background.png" type="Texture" id=14]
+[ext_resource path="res://assets/ui/enter_key.png" type="Texture" id=15]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 1, 1, 0 )
@@ -17,29 +23,70 @@ expand_margin_left = 10.0
 [node name="DialogNode" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = 1.0
+margin_right = 1.0
+mouse_filter = 2
 script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TextBubble" parent="." instance=ExtResource( 1 )]
+margin_left = -183.5
+margin_top = -93.0
+margin_right = 183.5
+margin_bottom = -16.0
+
+[node name="TextureRect" parent="TextBubble" index="1"]
+texture = ExtResource( 14 )
+
+[node name="RichTextLabel" parent="TextBubble" index="2"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = -16.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/italics_font = ExtResource( 13 )
+custom_fonts/bold_font = ExtResource( 12 )
+custom_fonts/normal_font = ExtResource( 10 )
+
+[node name="NextIndicator" parent="TextBubble/NextIndicatorContainer" index="0"]
+visible = false
+self_modulate = Color( 1, 1, 1, 0.57056 )
+margin_left = 334.0
+margin_top = 39.0
+margin_right = 357.0
+margin_bottom = 67.0
+texture = ExtResource( 15 )
+
+[node name="NameLabel" parent="TextBubble" index="4"]
+margin_top = -40.0
+margin_bottom = 2.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 0 )
+custom_fonts/font = ExtResource( 11 )
+
+[node name="ColorRect" parent="TextBubble/NameLabel" index="0"]
+visible = true
+color = Color( 0, 0, 0, 1 )
 
 [node name="Portraits" type="Control" parent="."]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
+mouse_filter = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextBubble" parent="." instance=ExtResource( 1 )]
-margin_top = -207.0
-margin_bottom = -40.0
-
 [node name="Options" type="VBoxContainer" parent="."]
-margin_right = 1024.0
-margin_bottom = 600.0
+margin_top = 19.0
+margin_right = 481.0
+margin_bottom = 288.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -160,4 +207,7 @@ __meta__ = {
 [node name="DialogicTimer" type="Timer" parent="."]
 one_shot = true
 
+[connection signal="gui_input" from="TextBubble/NextIndicatorContainer/NextIndicator" to="." method="_on_NextIndicator_gui_input"]
 [connection signal="timeout" from="DefinitionInfo/Timer" to="." method="_on_Definition_Timer_timeout"]
+
+[editable path="TextBubble"]

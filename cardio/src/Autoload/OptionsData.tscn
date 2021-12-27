@@ -1,10 +1,8 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://OptionsData.gd" type="Script" id=1]
-
-[sub_resource type="Gradient" id=1]
-colors = PoolColorArray( 0.152941, 0.184314, 0.188235, 1, 0.32549, 0.380392, 0.419608, 1 )
+[ext_resource path="res://src/Autoload/OptionsData.gd" type="Script" id=1]
+[ext_resource path="res://src/Autoload/Colors_4.tres" type="Gradient" id=2]
 
 [node name="OptionsData" type="Node"]
 script = ExtResource( 1 )
-shaderGardient = SubResource( 1 )
+shaderGardient = ExtResource( 2 )

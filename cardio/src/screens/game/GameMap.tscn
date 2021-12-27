@@ -1,12 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/actors/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/ui/UI_texture.png" type="Texture" id=2]
 [ext_resource path="res://src/actors/NPC.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/screens/game/GameMap.gd" type="Script" id=4]
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 234, 176.5 )
 
 [sub_resource type="TileSet" id=1]
 0/name = "UI_texture.png 0"
@@ -27,13 +24,6 @@ extents = Vector2( 234, 176.5 )
 [node name="GameMap" type="Node2D"]
 script = ExtResource( 4 )
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 2 )
-
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 1 )
 cell_size = Vector2( 8, 8 )
@@ -44,7 +34,5 @@ tile_data = PoolIntArray( -720917, 0, 0, -720916, 0, 0, -720915, 0, 0, -720914, 
 movement_speed = 25
 
 [node name="NPC" parent="." instance=ExtResource( 3 )]
-
-[connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]
 
 [editable path="Player"]

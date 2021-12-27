@@ -145,7 +145,7 @@ func fade_out(time = 0.5):
 
 func focus():
 	if not fading_out:
-		tween_modulate(modulate, Color(1,1,1, 1))
+#		tween_modulate(modulate, Color(1,1,1, 1))
 		var _parent = get_parent()
 		if _parent:
 			# Make sure that this portrait is the last to be _draw -ed
@@ -157,7 +157,7 @@ func focusout():
 	if single_portrait_mode:
 		alpha = 0
 	if not fading_out:
-		tween_modulate(modulate, Color(0.5,0.5,0.5, alpha))
+#		tween_modulate(modulate, Color(0.5,0.5,0.5, alpha))
 		var _parent = get_parent()
 		if _parent:
 			# Render this portrait first

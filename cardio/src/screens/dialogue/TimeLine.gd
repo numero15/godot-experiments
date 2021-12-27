@@ -70,6 +70,7 @@ func _on_trigger_area_exited(_area):
 		remove_effects(_area.get_parent().data)
 
 func apply_effects(_data):
+
 	self.set_will(will-1)
 	
 func remove_effects(_data):

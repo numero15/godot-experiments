@@ -1600,3 +1600,13 @@ func resume_state_from_info(state_info):
 			dialog_script['events'][event_index]['answered'] = true
 
 	_load_event_at_index(state_info['event_idx'])
+
+
+func _on_NextIndicator_gui_input(event):
+	if event is InputEventMouseButton :
+		if event.pressed :
+			var a = InputEventAction.new()
+			a.action = input_next
+			a.pressed = true
+			_input(a)
+			a.pressed = false

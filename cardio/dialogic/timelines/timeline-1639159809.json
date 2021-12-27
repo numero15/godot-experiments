@@ -7,8 +7,8 @@
 			"mirror": false,
 			"portrait": "",
 			"position": {
-				"0": true,
-				"1": false,
+				"0": false,
+				"1": true,
 				"2": false,
 				"3": false,
 				"4": false
@@ -19,11 +19,49 @@
 			"event_id": "dialogic_001",
 			"portrait": "",
 			"text": "C'est le matin ?"
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
+			"portrait": "",
+			"question": "gkhjk"
+		},
+		{
+			"choice": "gjhgjh",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1639159815.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "oui"
+		},
+		{
+			"choice": "hjjkhjjk",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "non"
+		},
+		{
+			"event_id": "dialogic_013"
 		}
 	],
 	"metadata": {
 		"dialogic-version": "1.3",
 		"file": "timeline-1639159809.json",
-		"name": "timeline-1639159809"
+		"name": "intro"
 	}
 }

@@ -8,12 +8,12 @@
 	"name": "innerThoughts",
 	"nickname": "",
 	"nickname_bool": false,
-	"offset_x": 0,
-	"offset_y": 0,
+	"offset_x": 16,
+	"offset_y": -82,
 	"portraits": [
 		{
 			"name": "Default",
-			"path": ""
+			"path": "res://dialogic/Portrait.tscn"
 		}
 	],
 	"scale": 100

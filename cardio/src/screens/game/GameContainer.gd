@@ -8,3 +8,4 @@ func _ready():
 func _on_ResizeHandle_gui_input(event):
 	._on_ResizeHandle_gui_input(event)
 	viewportContainer.rect_size = rect_size*3
+

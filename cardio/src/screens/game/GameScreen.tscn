@@ -30,10 +30,10 @@ __meta__ = {
 }
 
 [node name="GameContainer" parent="Windows" index="0" instance=ExtResource( 1 )]
-margin_left = 141.0
-margin_top = 69.0
-margin_right = -274.0
-margin_bottom = -137.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 224.0
+margin_bottom = 170.0
 
 [node name="Panel" parent="Windows" index="1" instance=ExtResource( 3 )]
 anchor_left = 1.0
@@ -43,7 +43,7 @@ margin_top = -185.0
 margin_right = -51.0
 margin_bottom = -74.0
 
-[node name="PauseScreen" parent="." index="2" instance=ExtResource( 5 )]
+[node name="PauseScreen" parent="." index="3" instance=ExtResource( 5 )]
 visible = false
 
 [connection signal="button_up" from="PauseButton" to="." method="_on_PauseButton_button_up"]
