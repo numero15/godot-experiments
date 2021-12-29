@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=2]
-
-[ext_resource path="res://src/replies/replies/WeakAnger.tscn" type="PackedScene" id=1]
-
-[node name="PlayerReplies" type="Node"]
-
-[node name="WeakAnger" parent="." instance=ExtResource( 1 )]

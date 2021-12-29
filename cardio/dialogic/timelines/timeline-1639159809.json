@@ -16,21 +16,15 @@
 		},
 		{
 			"character": "character-1639159815.json",
-			"event_id": "dialogic_001",
-			"portrait": "",
-			"text": "C'est le matin ?"
-		},
-		{
-			"character": "",
 			"event_id": "dialogic_010",
 			"options": [
 
 			],
 			"portrait": "",
-			"question": "gkhjk"
+			"question": "Hello me, wakey-wakey, shall we ?"
 		},
 		{
-			"choice": "gjhgjh",
+			"choice": "no *convince*",
 			"condition": "",
 			"definition": "",
 			"event_id": "dialogic_011",
@@ -40,20 +34,24 @@
 			"character": "character-1639159815.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "oui"
+			"text": "Here we go again..."
 		},
 		{
-			"choice": "hjjkhjjk",
+			"emit_signal": "debate",
+			"event_id": "dialogic_040"
+		},
+		{
+			"choice": "yes",
 			"condition": "",
 			"definition": "",
 			"event_id": "dialogic_011",
 			"value": ""
 		},
 		{
-			"character": "",
+			"character": "character-1639159815.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "non"
+			"text": "I can't agree more"
 		},
 		{
 			"event_id": "dialogic_013"

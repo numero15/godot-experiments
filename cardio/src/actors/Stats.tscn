@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/actors/Stats.gd" type="Script" id=1]
+
+[node name="Stats" type="Node"]
+script = ExtResource( 1 )
+max_will = 10
+current_will = 10
+seduction_offensive = 10
+persuasion_offensive = 10
+intimidation_offensive = 10
+seduction_defensive = 10
+persuasion_defensive = 10
+intimidation_defensive = 10
+lock_timeline = true

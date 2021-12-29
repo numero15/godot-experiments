@@ -10,5 +10,4 @@ export(bool) var debug_mode = false
 func _ready():
 	var d = Dialogic.start(timeline, '', "res://addons/dialogic/Nodes/DialogNode.tscn",  debug_mode, add_canvas)
 	get_parent().call_deferred('add_child', d)
-	get_parent().call_deferred('move_child',d, 3)
 	queue_free()

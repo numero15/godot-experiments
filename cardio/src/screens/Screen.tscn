@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://src/screens/Screen.gd" type="Script" id=1]
 [ext_resource path="res://src/shaders/palette.gdshader" type="Shader" id=2]
 [ext_resource path="res://assets/theme/UI_theme.tres" type="Theme" id=3]
 [ext_resource path="res://assets/ui/noise.png" type="Texture" id=4]
+[ext_resource path="res://src/screens/UI/TransitionRect.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/ui/noiseSmall.png" type="Texture" id=6]
 [ext_resource path="res://src/shaders/vhs.gdshader" type="Shader" id=7]
 
@@ -124,3 +125,6 @@ texture = ExtResource( 4 )
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="TransitionRect" parent="." instance=ExtResource( 5 )]
+visible = false

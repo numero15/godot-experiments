@@ -29,6 +29,9 @@ render_target_update_mode = 3
 
 [node name="GameMap" parent="ViewportContainer/Viewport" index="0" instance=ExtResource( 2 )]
 
+[node name="TileMap" parent="ViewportContainer/Viewport/GameMap" index="0"]
+visible = false
+
 [node name="TextureRect" parent="." index="1"]
 texture = ExtResource( 3 )
 

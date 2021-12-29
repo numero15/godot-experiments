@@ -4,8 +4,11 @@ export (int) var movement_speed = 175
 var velocity = Vector2.ZERO
 var target = Vector2()
 onready var camera = get_node("Camera2D")
+var is_active = true
 
 func _physics_process(delta):
+	if not is_active :
+		return
 	
 #	var inputVector = Vector2.ZERO
 #	inputVector.x = Input.get_action_strength("ui_right")-Input.get_action_strength("ui_left")

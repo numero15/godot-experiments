@@ -69,8 +69,8 @@ config/icon="res://icon.png"
 [autoload]
 
 PlayerData="*res://src/Autoload/PlayerData.tscn"
-PlayerReplies="*res://src/Autoload/PlayerReplies.tscn"
 OptionsData="*res://src/Autoload/OptionsData.tscn"
+OpponentData="*res://src/Autoload/OpponentData.tscn"
 
 [display]
 
