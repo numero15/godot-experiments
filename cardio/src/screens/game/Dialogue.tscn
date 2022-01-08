@@ -1,0 +1,173 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://src/screens/dialogue/ButtonPause.gd" type="Script" id=1]
+[ext_resource path="res://src/screens/dialogue/StateIntro.gd" type="Script" id=2]
+[ext_resource path="res://src/screens/dialogue/Replies.gd" type="Script" id=4]
+[ext_resource path="res://src/screens/dialogue/StateDialogue.gd" type="Script" id=5]
+[ext_resource path="res://src/screens/dialogue/StateMachine.gd" type="Script" id=6]
+[ext_resource path="res://assets/theme/UI_theme.tres" type="Theme" id=7]
+[ext_resource path="res://assets/theme/title_theme.tres" type="Theme" id=8]
+[ext_resource path="res://src/screens/dialogue/TimeLine.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/screens/dialogue/Dialogue.gd" type="Script" id=10]
+[ext_resource path="res://src/screens/dialogue/StateEnd.gd" type="Script" id=11]
+
+[node name="Dialogue" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource( 7 )
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Opponents" type="HBoxContainer" parent="."]
+margin_right = 480.0
+margin_bottom = 119.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TimeLinePlayer" parent="Opponents" instance=ExtResource( 9 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 238.0
+margin_bottom = 119.0
+speed = 25
+cell_size = 20
+
+[node name="OpponentInfos" parent="Opponents/TimeLinePlayer" index="0"]
+margin_right = 238.0
+margin_bottom = 99.0
+
+[node name="RichTextLabel" parent="Opponents/TimeLinePlayer/OpponentInfos" index="0"]
+margin_left = 5.0
+margin_top = 1.0
+margin_right = 417.0
+margin_bottom = 251.0
+
+[node name="HBoxContainer" parent="Opponents/TimeLinePlayer/OpponentInfos" index="1"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -64.0
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="TimelineContainer" parent="Opponents/TimeLinePlayer" index="1"]
+margin_top = 103.0
+margin_right = 238.0
+margin_bottom = 119.0
+
+[node name="DropZones" parent="Opponents/TimeLinePlayer/TimelineContainer" index="1"]
+anchor_top = 0.062
+anchor_right = 0.941
+margin_top = 0.00799996
+margin_right = 0.0419922
+
+[node name="TimeLineOpponent" parent="Opponents" instance=ExtResource( 9 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 242.0
+margin_right = 480.0
+margin_bottom = 119.0
+type = 1
+speed = 25
+cell_size = 35
+
+[node name="OpponentInfos" parent="Opponents/TimeLineOpponent" index="0"]
+margin_right = 238.0
+margin_bottom = 99.0
+
+[node name="HBoxContainer" parent="Opponents/TimeLineOpponent/OpponentInfos" index="1"]
+anchor_bottom = 1.0
+margin_left = 0.0
+margin_right = 64.0
+margin_bottom = 0.0
+
+[node name="TimelineContainer" parent="Opponents/TimeLineOpponent" index="1"]
+margin_top = 103.0
+margin_right = 238.0
+margin_bottom = 119.0
+
+[node name="HSeparator" parent="Opponents/TimeLineOpponent/TimelineContainer" index="0"]
+margin_left = 16.0
+margin_right = 0.0
+
+[node name="DropZones" parent="Opponents/TimeLineOpponent/TimelineContainer" index="1"]
+anchor_left = 0.059
+anchor_top = 0.062
+margin_left = -0.0420008
+margin_top = 0.00799996
+
+[node name="Trigger" parent="Opponents/TimeLineOpponent/TimelineContainer" index="3"]
+anchor_left = 0.0
+anchor_top = 0.5
+anchor_right = 0.0
+anchor_bottom = 0.5
+margin_left = 0.0
+margin_top = -7.5
+margin_right = 15.0
+margin_bottom = 7.5
+
+[node name="TextureLock" parent="Opponents/TimeLineOpponent/TimelineContainer" index="4"]
+margin_left = -227.0
+margin_right = -216.0
+
+[node name="UI" type="HBoxContainer" parent="."]
+margin_top = 123.0
+margin_right = 480.0
+margin_bottom = 146.0
+size_flags_horizontal = 3
+theme = ExtResource( 8 )
+alignment = 1
+
+[node name="ButtonRewind" type="Button" parent="UI"]
+margin_left = 196.0
+margin_right = 235.0
+margin_bottom = 23.0
+text = "rewind"
+
+[node name="ButtonPause" type="Button" parent="UI"]
+margin_left = 239.0
+margin_right = 284.0
+margin_bottom = 23.0
+rect_min_size = Vector2( 45, 0 )
+size_flags_horizontal = 4
+toggle_mode = true
+action_mode = 0
+text = "Pause"
+script = ExtResource( 1 )
+text_toggle = "play"
+
+[node name="Replies" type="HBoxContainer" parent="."]
+margin_top = 150.0
+margin_right = 480.0
+margin_bottom = 270.0
+size_flags_vertical = 3
+script = ExtResource( 4 )
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource( 6 )
+initial_state = NodePath("StateIntro")
+
+[node name="StateIntro" type="Node" parent="StateMachine"]
+script = ExtResource( 2 )
+
+[node name="StateDialogue" type="Node" parent="StateMachine"]
+script = ExtResource( 5 )
+
+[node name="StateEnd" type="Node" parent="StateMachine"]
+script = ExtResource( 11 )
+
+[connection signal="pause_timeline" from="Opponents/TimeLinePlayer" to="StateMachine/StateDialogue" method="_on_pause_timeline"]
+[connection signal="play_timeline" from="Opponents/TimeLinePlayer" to="StateMachine/StateDialogue" method="_on_play_timeline"]
+[connection signal="pause_timeline" from="Opponents/TimeLineOpponent" to="StateMachine/StateDialogue" method="_on_pause_timeline"]
+[connection signal="play_timeline" from="Opponents/TimeLineOpponent" to="StateMachine/StateDialogue" method="_on_play_timeline"]
+[connection signal="button_down" from="UI/ButtonRewind" to="StateMachine/StateDialogue" method="_on_ButtonRewind_button_down"]
+[connection signal="button_up" from="UI/ButtonRewind" to="StateMachine/StateDialogue" method="_on_ButtonRewind_button_up"]
+[connection signal="toggled" from="UI/ButtonPause" to="UI/ButtonPause" method="_on_toggled"]
+[connection signal="toggled" from="UI/ButtonPause" to="StateMachine/StateDialogue" method="_on_ButtonPause_toggled"]
+
+[editable path="Opponents/TimeLinePlayer"]
+[editable path="Opponents/TimeLineOpponent"]

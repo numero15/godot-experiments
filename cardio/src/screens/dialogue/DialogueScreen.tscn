@@ -1,12 +1,7 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/screens/Screen.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/theme/UI_theme.tres" type="Theme" id=2]
-[ext_resource path="res://src/screens/dialogue/Replies.gd" type="Script" id=3]
-[ext_resource path="res://src/screens/dialogue/TimeLine.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/theme/title_theme.tres" type="Theme" id=5]
-[ext_resource path="res://src/screens/dialogue/Dialogue.gd" type="Script" id=6]
-[ext_resource path="res://src/screens/dialogue/ButtonPause.gd" type="Script" id=7]
+[ext_resource path="res://src/screens/game/Dialogue.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/ui/UI_texture.png" type="Texture" id=8]
 
 [node name="Screen" instance=ExtResource( 1 )]
@@ -27,156 +22,60 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Dialogue" type="VBoxContainer" parent="NinePatchRect" index="0"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 0
-grow_vertical = 0
-theme = ExtResource( 2 )
-script = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Dialogue" parent="NinePatchRect" index="0" instance=ExtResource( 2 )]
 
-[node name="Opponents" type="HBoxContainer" parent="NinePatchRect/Dialogue" index="0"]
+[node name="Opponents" parent="NinePatchRect/Dialogue" index="0"]
 margin_right = 464.0
 margin_bottom = 111.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
 
-[node name="TimeLinePlayer" parent="NinePatchRect/Dialogue/Opponents" index="0" instance=ExtResource( 4 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="TimeLinePlayer" parent="NinePatchRect/Dialogue/Opponents" index="0"]
 margin_right = 230.0
 margin_bottom = 111.0
-speed = 25
-cell_size = 35
 
 [node name="OpponentInfos" parent="NinePatchRect/Dialogue/Opponents/TimeLinePlayer" index="0"]
 margin_right = 230.0
 margin_bottom = 91.0
-
-[node name="RichTextLabel" parent="NinePatchRect/Dialogue/Opponents/TimeLinePlayer/OpponentInfos" index="0"]
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = -156.0
-margin_top = -49.5
-margin_right = -70.0
-margin_bottom = 49.5
-
-[node name="HBoxContainer" parent="NinePatchRect/Dialogue/Opponents/TimeLinePlayer/OpponentInfos" index="1"]
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -64.0
-margin_right = 0.0
-margin_bottom = 0.0
 
 [node name="TimelineContainer" parent="NinePatchRect/Dialogue/Opponents/TimeLinePlayer" index="1"]
 margin_top = 95.0
 margin_right = 230.0
 margin_bottom = 111.0
 
-[node name="DropZones" parent="NinePatchRect/Dialogue/Opponents/TimeLinePlayer/TimelineContainer" index="1"]
-margin_right = -14.0
-
-[node name="TimeLineOpponent" parent="NinePatchRect/Dialogue/Opponents" index="1" instance=ExtResource( 4 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="TimeLineOpponent" parent="NinePatchRect/Dialogue/Opponents" index="1"]
 margin_left = 234.0
 margin_right = 464.0
 margin_bottom = 111.0
-type = 1
-speed = 25
-cell_size = 35
 
 [node name="OpponentInfos" parent="NinePatchRect/Dialogue/Opponents/TimeLineOpponent" index="0"]
 margin_right = 230.0
 margin_bottom = 91.0
-
-[node name="RichTextLabel" parent="NinePatchRect/Dialogue/Opponents/TimeLineOpponent/OpponentInfos" index="0"]
-anchor_bottom = 1.0
-margin_left = 67.0
-margin_right = 161.0
-margin_bottom = 0.0
-
-[node name="HBoxContainer" parent="NinePatchRect/Dialogue/Opponents/TimeLineOpponent/OpponentInfos" index="1"]
-anchor_bottom = 1.0
-margin_left = 0.0
-margin_right = 64.0
-margin_bottom = 0.0
 
 [node name="TimelineContainer" parent="NinePatchRect/Dialogue/Opponents/TimeLineOpponent" index="1"]
 margin_top = 95.0
 margin_right = 230.0
 margin_bottom = 111.0
 
-[node name="HSeparator" parent="NinePatchRect/Dialogue/Opponents/TimeLineOpponent/TimelineContainer" index="0"]
-margin_left = 16.0
-margin_right = 0.0
-
-[node name="DropZones" parent="NinePatchRect/Dialogue/Opponents/TimeLineOpponent/TimelineContainer" index="1"]
-margin_left = 15.0
-
-[node name="Trigger" parent="NinePatchRect/Dialogue/Opponents/TimeLineOpponent/TimelineContainer" index="3"]
-anchor_left = 0.0
-anchor_right = 0.0
-margin_left = 0.0
-margin_right = 16.0
-
-[node name="TextureLock" parent="NinePatchRect/Dialogue/Opponents/TimeLineOpponent/TimelineContainer" index="4"]
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 10.0
-margin_top = -5.0
-margin_right = 21.0
-margin_bottom = 6.0
-
-[node name="UI" type="HBoxContainer" parent="NinePatchRect/Dialogue" index="1"]
+[node name="UI" parent="NinePatchRect/Dialogue" index="1"]
 margin_top = 115.0
 margin_right = 464.0
 margin_bottom = 138.0
-size_flags_horizontal = 3
-theme = ExtResource( 5 )
-alignment = 1
 
-[node name="ButtonRewind" type="Button" parent="NinePatchRect/Dialogue/UI" index="0"]
+[node name="ButtonRewind" parent="NinePatchRect/Dialogue/UI" index="0"]
 margin_left = 188.0
 margin_right = 227.0
-margin_bottom = 23.0
-text = "rewind"
 
-[node name="ButtonPause" type="Button" parent="NinePatchRect/Dialogue/UI" index="1"]
+[node name="ButtonPause" parent="NinePatchRect/Dialogue/UI" index="1"]
 margin_left = 231.0
 margin_right = 276.0
-margin_bottom = 23.0
-rect_min_size = Vector2( 45, 0 )
-size_flags_horizontal = 4
-toggle_mode = true
-action_mode = 0
-text = "Pause"
-script = ExtResource( 7 )
-text_toggle = "play"
 
-[node name="Replies" type="HBoxContainer" parent="NinePatchRect/Dialogue" index="2"]
+[node name="Replies" parent="NinePatchRect/Dialogue" index="2"]
 margin_top = 142.0
 margin_right = 464.0
 margin_bottom = 254.0
-size_flags_vertical = 3
-script = ExtResource( 3 )
 
-[connection signal="pause_timeline" from="NinePatchRect/Dialogue/Opponents/TimeLinePlayer" to="NinePatchRect/Dialogue" method="_on_pause_timeline"]
-[connection signal="play_timeline" from="NinePatchRect/Dialogue/Opponents/TimeLinePlayer" to="NinePatchRect/Dialogue" method="_on_play_timeline"]
-[connection signal="pause_timeline" from="NinePatchRect/Dialogue/Opponents/TimeLineOpponent" to="NinePatchRect/Dialogue" method="_on_pause_timeline"]
-[connection signal="play_timeline" from="NinePatchRect/Dialogue/Opponents/TimeLineOpponent" to="NinePatchRect/Dialogue" method="_on_play_timeline"]
-[connection signal="button_down" from="NinePatchRect/Dialogue/UI/ButtonRewind" to="NinePatchRect/Dialogue" method="_on_ButtonRewind_button_down"]
-[connection signal="button_up" from="NinePatchRect/Dialogue/UI/ButtonRewind" to="NinePatchRect/Dialogue" method="_on_ButtonRewind_button_up"]
-[connection signal="toggled" from="NinePatchRect/Dialogue/UI/ButtonPause" to="NinePatchRect/Dialogue" method="_on_ButtonPause_toggled"]
-[connection signal="toggled" from="NinePatchRect/Dialogue/UI/ButtonPause" to="NinePatchRect/Dialogue/UI/ButtonPause" method="_on_toggled"]
+[node name="StateMachine" parent="NinePatchRect/Dialogue" index="3"]
+initial_state = NodePath("StateDialogue")
 
+[editable path="NinePatchRect/Dialogue"]
 [editable path="NinePatchRect/Dialogue/Opponents/TimeLinePlayer"]
 [editable path="NinePatchRect/Dialogue/Opponents/TimeLineOpponent"]

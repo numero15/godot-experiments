@@ -18,16 +18,24 @@ export (int) var cell_size
 var  will=10 setget set_will
 var direction
 var direction_modifier = 1
+var opponent
 
 func set_will(_i):
 	will=_i
 	will_bar.value=will
 
 func _ready():
-	direction = 1 if type==speaker.PLAYER else -1
-	will_bar.fill_mode=0 if type==speaker.PLAYER else 1
-	will_bar.max_value = will
-	self.set_will(will)
+	if type==speaker.PLAYER :
+		direction = 1
+		will_bar.fill_mode=0
+		setup_data(PlayerData.get_node("Stats"))
+	
+	else:
+		direction = -1
+		will_bar.fill_mode=1
+		if OpponentData.has_node("Stats") :
+			setup_data(OpponentData.get_node("Stats"))
+		
 	graduations_container.setup(type,cell_size,self)
 	if not is_locked :
 		lock_picto.visible = false
@@ -70,11 +78,12 @@ func _on_trigger_area_exited(_area):
 		remove_effects(_area.get_parent().data)
 
 func apply_effects(_data):
-
 	self.set_will(will-1)
+#	opponent.set_will(opponent.will-1)
 	
 func remove_effects(_data):
 	self.set_will(will+1)
+#	opponent.set_will(opponent.will+1)
 
 func _on_reply_enter(reply_data, area):
 	if is_locked:
@@ -97,4 +106,8 @@ func rewind() :
 
 func play():
 	direction_modifier = 1
+	
+func setup_data(data):
+	will_bar.max_value = will
+	self.set_will(will)
 

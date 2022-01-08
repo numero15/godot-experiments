@@ -6,7 +6,7 @@ func setup(_opponent,_cell_size,_owner):
 	var i = rect_size.x if _opponent == 1 else 0
 	var dir = -1 if _opponent == 1 else 1
 	for graduation in get_children() :
-		graduation.rect_position.x = i-3
+		graduation.rect_position.x = i-4
 		i+=cell_size*dir
 		graduation.get_node("Area2D").connect("reply_dropped", _owner, "_on_reply_dropped")
 		graduation.get_node("Area2D").connect("reply_enter", _owner, "_on_reply_enter")
@@ -18,7 +18,7 @@ func move(_dist):
 		graduation.rect_position.x += _dist
 	#then replace if needed (prevent positioning error)
 	for graduation in get_children() :
-		if graduation.rect_position.x < -8 and _dist < 0:
+		if graduation.rect_position.x < -7 and _dist < 0:
 			graduation.rect_position.x = get_rightest_child().rect_position.x + cell_size
 		if graduation.rect_position.x > rect_size.x  and _dist > 0 :
 			graduation.rect_position.x = get_leftest_child().rect_position.x - cell_size

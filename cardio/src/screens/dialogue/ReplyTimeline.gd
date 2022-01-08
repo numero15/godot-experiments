@@ -1,7 +1,7 @@
 extends Control
 
 var reply_draggable = preload("res://src/screens/dialogue/ReplyDraggable.tscn")
-var  duration setget setDuration
+var  duration # setget setDuration
 var  mirrored setget setMirrored
 var cell_size = 32
 var data = null setget setData
@@ -10,6 +10,7 @@ var direction
 onready var effect_area = get_node("AreaEffect")
 onready var collision_shape = get_node("AreaCollision/CollisionShape2D")
 onready var collision_area = get_node("AreaCollision")
+onready var label_name = get_node("Name")
 
 func setDuration(_d):
 	duration = _d
@@ -20,6 +21,7 @@ func setDuration(_d):
 func setData(_d):
 	data = _d
 	setDuration( data.duration)
+	label_name.text=data.reply_name
 	
 func setMirrored(_b):
 	mirrored = _b
@@ -41,8 +43,8 @@ func _on_drag_gui_input(event):
 				top_control = top_control.get_parent()
 				
 			var drag_data = reply_draggable.instance()
-			drag_data.data =data
 			top_control.add_child(drag_data)
+			drag_data.data = data
 			queue_free()
 
 func _on_AreaCollision_area_entered(area):

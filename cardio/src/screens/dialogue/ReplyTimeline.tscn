@@ -5,6 +5,7 @@
 [ext_resource path="res://assets/ui/UI_texture.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=2]
+resource_local_to_scene = true
 extents = Vector2( 114, 9 )
 
 [sub_resource type="RectangleShape2D" id=1]

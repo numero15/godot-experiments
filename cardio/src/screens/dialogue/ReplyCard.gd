@@ -5,7 +5,7 @@ var reply_draggable = preload("res://src/screens/dialogue/ReplyDraggable.tscn")
 	
 func setup(data):
 	reply_data = data.duplicate()
-	get_node("VBoxContainer/Name").text = reply_data.name
+	get_node("VBoxContainer/Name").text = reply_data.reply_name
 
 func _on_gui_input(event):
 	if event is InputEventMouseButton :
@@ -20,6 +20,6 @@ func _on_gui_input(event):
 				top_control = top_control.get_parent()
 				
 			var drag_data = reply_draggable.instance()
-			drag_data.data =reply_data
 			top_control.add_child(drag_data)
+			drag_data.data =reply_data
 
